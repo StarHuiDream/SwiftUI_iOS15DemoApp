@@ -20,7 +20,6 @@ struct TabBar: View {
         .background(
             background
         ).overlay(
-    
             overlay
         )
             .strokeStyle(cornerRadius: 34)
@@ -94,7 +93,7 @@ struct TabBar: View {
             }
             if selectedTab == .notifications { Spacer() }
         }
-            .padding(.horizontal, 8)
+        .padding(.horizontal, 8)
     }
 }
 
