@@ -11,7 +11,11 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             FeatureItemView()
-        }.overlay(
+            Color.yellow.frame(height: 1000)
+        }.safeAreaInset(edge: .top, content: {
+            Color.clear.frame(height: 70)
+        })
+        .overlay(
             NavigationBarView(title: "Featured")
         )
     }
