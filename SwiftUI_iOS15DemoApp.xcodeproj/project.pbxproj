@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A73FCE39294594290086F194 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FCE38294594290086F194 /* TabBar.swift */; };
 		A78AB0AA29433191008823EB /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0A929433191008823EB /* Styles.swift */; };
 		A78AB0AC29434ADD008823EB /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AB29434ADD008823EB /* AccountView.swift */; };
 		A78AB0AE29437D55008823EB /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AD29437D54008823EB /* BlobView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A73FCE38294594290086F194 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		A78AB0A929433191008823EB /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		A78AB0AB29434ADD008823EB /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A78AB0AD29437D54008823EB /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				A7DB63AC2942E42E004F44D1 /* ContentView.swift */,
 				A78AB0AF29440FBC008823EB /* HexagonView.swift */,
 				A7DB63AA2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift */,
+				A73FCE38294594290086F194 /* TabBar.swift */,
 				A7DB63AE2942E42F004F44D1 /* Assets.xcassets */,
 				A7DB63B02942E42F004F44D1 /* Preview Content */,
 				A78AB0A829433180008823EB /* Styles */,
@@ -283,6 +286,7 @@
 				A7DB63AD2942E42E004F44D1 /* ContentView.swift in Sources */,
 				A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */,
 				A78AB0B029440FBC008823EB /* HexagonView.swift in Sources */,
+				A73FCE39294594290086F194 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
