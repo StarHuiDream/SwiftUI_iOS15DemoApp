@@ -8,37 +8,86 @@
 import SwiftUI
 
 struct TabBar: View {
+    @State var selectedTab: Tab = .home
     var body: some View {
         ZStack (alignment: .bottom) {
-            ContentView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Group {
+                switch selectedTab {
+                case .home:
+                    ContentView()
+                case .explore:
+                    AccountView()
+                case .notifications:
+                    ContentView()
+                case .library:
+                    AccountView()
+                }
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            
             HStack {
-                Spacer()
-                VStack(spacing: 0) {
-                    Image(systemName: "house")
-                        .symbolVariant(.fill)
-                        .symbolVariant(.fill)
-                        .font(.body.bold())
-                        .frame(width: 80, height: 29)
-                    Text("Home").font(.caption2)
+                ForEach(items) { item in
+                    Button {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            selectedTab = item.tab
+                        }
+                    } label: {
+                        VStack(spacing: 0) {
+                            Image(systemName: item.icon)
+                                .symbolVariant(.fill)
+                                .symbolVariant(.fill)
+                                .font(.body.bold())
+                                .frame(width: 40, height: 29)
+                            Text(item.text).font(.caption2)
+                        }
+                        .frame(maxWidth: .infinity)
+                    }.foregroundColor( selectedTab == item.tab ? .primary : .secondary )
                 }
-                Spacer()
-                VStack(spacing: 0) {
-                    Image(systemName: "person")
-                        .symbolVariant(.fill)
-                        .font(.body.bold())
-                        .frame(width: 80, height: 29)
-                    Text("Account").font(.caption2)
-                    
-                }
-                Spacer()
             }
             .padding(.top, 14)
             .frame(height: 88 , alignment: .top)
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 34, style: .continuous))
-            .strokeStyle(cornerRadius: 34)
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .ignoresSafeArea()
+            .background(
+                HStack{
+                    if selectedTab == .library { Spacer() }
+                    if selectedTab == .explore { Spacer() }
+                    if selectedTab == .notifications {
+                        Spacer()
+                        Spacer()
+                    }
+                    Circle().fill(Color.teal).frame(width: 88)
+                    if selectedTab == .home { Spacer() }
+                    if selectedTab == .explore {
+                        Spacer()
+                        Spacer()
+                    }
+                    if selectedTab == .notifications { Spacer() }
+                }
+            ).overlay(
+                HStack{
+                    if selectedTab == .library { Spacer() }
+                    if selectedTab == .explore { Spacer() }
+                    if selectedTab == .notifications {
+                        Spacer()
+                        Spacer()
+                    }
+                    Rectangle()
+                        .fill(.teal)
+                        .frame(width: 44, height: 5, alignment: .top)
+                        .cornerRadius(3)
+                        .frame(width: 88)
+                        .frame(maxHeight: .infinity, alignment: .top)
+                    if selectedTab == .home { Spacer() }
+                    if selectedTab == .explore {
+                        Spacer()
+                        Spacer()
+                    }
+                    if selectedTab == .notifications { Spacer() }
+                }
+                    .padding(.horizontal, 8)
+            )
+                .strokeStyle(cornerRadius: 34)
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .ignoresSafeArea()
         }
     }
 }
