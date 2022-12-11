@@ -45,6 +45,8 @@ struct AccountView: View {
                         .symbolVariant(.fill)
                         .font(.system(size: 200))
                         .offset(x: -50, y: -100)
+                ).background(
+                    BlobView().offset(x: 100, y: -100)
                 )
             Text("StarHui")
                 .font(.title.weight(.semibold))
