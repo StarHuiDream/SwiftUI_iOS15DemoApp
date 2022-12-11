@@ -9,13 +9,17 @@ import SwiftUI
 
 struct NavigationBarView: View {
     var title = ""
+    @Binding var isScrolled: Bool
     var body: some View {
         ZStack{
-            Color.clear
+            Color.clear.opacity(isScrolled ? 0 : 1)
                 .background(.ultraThinMaterial)
                 .blur(radius: 10)
             Text(title).font(.largeTitle.bold())
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 20)
+                .padding(.top, 20)
+                .offset(y: isScrolled ? 0 : -4)
             HStack{
                 Image(systemName: "magnifyingglass")
                     .font(.body.weight(.bold))
@@ -34,15 +38,16 @@ struct NavigationBarView: View {
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
+            .padding(.top, 20)
+            .offset(y: isScrolled ? 0 : -4)
         }
-        .frame(height: 77)
+        .frame(height: isScrolled ? 77 : 44)
         .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.leading, 20)
     }
 }
 
 struct NavigationBarView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBarView(title: "TEST")
+        NavigationBarView(title: "TEST", isScrolled: .constant(false))
     }
 }
