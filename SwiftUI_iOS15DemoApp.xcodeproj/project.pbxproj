@@ -12,6 +12,7 @@
 		A73FCE3F2945E47B0086F194 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FCE3E2945E47A0086F194 /* HomeView.swift */; };
 		A73FCE432945EE9C0086F194 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FCE422945EE9C0086F194 /* NavigationBarView.swift */; };
 		A73FCE452945F0320086F194 /* FeatureItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FCE442945F0320086F194 /* FeatureItemView.swift */; };
+		A73FCE472945FD030086F194 /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FCE462945FD030086F194 /* PreferenceKeys.swift */; };
 		A78AB0AA29433191008823EB /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0A929433191008823EB /* Styles.swift */; };
 		A78AB0AC29434ADD008823EB /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AB29434ADD008823EB /* AccountView.swift */; };
 		A78AB0AE29437D55008823EB /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AD29437D54008823EB /* BlobView.swift */; };
@@ -48,6 +49,7 @@
 		A73FCE3E2945E47A0086F194 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A73FCE422945EE9C0086F194 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		A73FCE442945F0320086F194 /* FeatureItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureItemView.swift; sourceTree = "<group>"; };
+		A73FCE462945FD030086F194 /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		A78AB0A929433191008823EB /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		A78AB0AB29434ADD008823EB /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A78AB0AD29437D54008823EB /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A73FCE3A29459BFD0086F194 /* Tab.swift */,
+				A73FCE462945FD030086F194 /* PreferenceKeys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				A7DB63AD2942E42E004F44D1 /* ContentView.swift in Sources */,
 				A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */,
 				A78AB0B029440FBC008823EB /* HexagonView.swift in Sources */,
+				A73FCE472945FD030086F194 /* PreferenceKeys.swift in Sources */,
 				A73FCE39294594290086F194 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,15 +8,32 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State var isScrolled = false
+    let coordinateSpaceName = "homeScroll"
+    
+    
     var body: some View {
         ScrollView {
+            GeometryReader { proxy in
+//                Text("\(proxy.frame(in: .named(coordinateSpaceName)).minY)")
+                Color.clear.preference(key: ScrollViewKey.self, value: proxy.frame(in: .named(coordinateSpaceName)).maxY)
+            }
+//            .frame(height: 0)
             FeatureItemView()
             Color.yellow.frame(height: 1000)
-        }.safeAreaInset(edge: .top, content: {
+        }
+        .coordinateSpace(name: coordinateSpaceName)
+        .onPreferenceChange(ScrollViewKey.self, perform: { value in
+            withAnimation {
+                isScrolled = value > 0
+            }
+        })
+        .safeAreaInset(edge: .top, content: {
             Color.clear.frame(height: 70)
         })
         .overlay(
-            NavigationBarView(title: "Featured")
+            NavigationBarView(title: "Featured").opacity(isScrolled ? 0 : 1)
         )
     }
 }
