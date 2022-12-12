@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct FeatureItemView: View {
+    var course: Course = courses[0]
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
-            Image("Logo 2")
+            Image(course.logo)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 26.0, height: 26.0)
                 .cornerRadius(/*@START_MENU_TOKEN@*/13.0/*@END_MENU_TOKEN@*/)
                 .strokeStyle(cornerRadius: 20)
-            Text("Swift UI For iOS 15")
+            Text(course.title)
                 .font(.title)
                 .foregroundStyle(.linearGradient(colors: [Color.primary, Color.primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
-            Text("20 sections - 3 hours.")
+            Text(course.subtitle)
                 .font(.footnote)
                 .fontWeight(.medium)
                 .foregroundColor(.secondary)
-            Text("Build an iOS app for iOS 15 with custom layouts, animations and")
+            Text(course.text)
                 .font(.footnote)
                 .fontWeight(.medium)
                 .lineLimit(2)
@@ -32,22 +33,15 @@ struct FeatureItemView: View {
                 .foregroundColor(.secondary)
         }
         .padding(.all, 20.0)
-        .padding(.vertical, 20.0)
         .frame(height: 350.0)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .circular))
+        .background(.ultraThinMaterial)
+        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
+//        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .circular))
 //        .cornerRadius(/*@START_MENU_TOKEN@*/30.0/*@END_MENU_TOKEN@*/)
-        .shadow(color: Color("Shadow").opacity(0.8), radius: 10, x: 10, y: 0)
+//        .shadow(color: Color("Shadow").opacity(0.8), radius: 10, x: 10, y: 0)
 //        .modifier(StrokeStyle())
         .strokeStyle()
         .padding(.horizontal, 20)
-        .background(Image("Blob 1").offset(x: 250, y: -100))
-        .overlay(
-            Image("Illustration 5")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 230)
-                .offset(x: 32, y: -80)
-        )
     }
 }
 
