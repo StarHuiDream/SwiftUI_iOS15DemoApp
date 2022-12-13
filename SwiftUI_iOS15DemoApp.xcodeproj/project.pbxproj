@@ -19,6 +19,7 @@
 		A78AB0AC29434ADD008823EB /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AB29434ADD008823EB /* AccountView.swift */; };
 		A78AB0AE29437D55008823EB /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AD29437D54008823EB /* BlobView.swift */; };
 		A78AB0B029440FBC008823EB /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AF29440FBC008823EB /* HexagonView.swift */; };
+		A7CB6D972946DCBA00606601 /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6D962946DCBA00606601 /* MatchedView.swift */; };
 		A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB63AA2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift */; };
 		A7DB63AD2942E42E004F44D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB63AC2942E42E004F44D1 /* ContentView.swift */; };
 		A7DB63AF2942E42F004F44D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DB63AE2942E42F004F44D1 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		A78AB0AB29434ADD008823EB /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A78AB0AD29437D54008823EB /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		A78AB0AF29440FBC008823EB /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
+		A7CB6D962946DCBA00606601 /* MatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedView.swift; sourceTree = "<group>"; };
 		A7DB63A72942E42E004F44D1 /* SwiftUI_iOS15DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUI_iOS15DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DB63AA2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_iOS15DemoAppApp.swift; sourceTree = "<group>"; };
 		A7DB63AC2942E42E004F44D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				A78AB0AB29434ADD008823EB /* AccountView.swift */,
 				A73FCE3E2945E47A0086F194 /* HomeView.swift */,
+				A7CB6D962946DCBA00606601 /* MatchedView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				A78AB0AE29437D55008823EB /* BlobView.swift in Sources */,
 				A78AB0AC29434ADD008823EB /* AccountView.swift in Sources */,
 				A73FCE452945F0320086F194 /* FeatureItemView.swift in Sources */,
+				A7CB6D972946DCBA00606601 /* MatchedView.swift in Sources */,
 				A78AB0AA29433191008823EB /* Styles.swift in Sources */,
 				A73FCE432945EE9C0086F194 /* NavigationBarView.swift in Sources */,
 				A73FCE3B29459BFD0086F194 /* Tab.swift in Sources */,

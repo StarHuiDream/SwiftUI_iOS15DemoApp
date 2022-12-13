@@ -18,16 +18,17 @@ struct HomeView: View {
                 //                Text("\(proxy.frame(in: .named(coordinateSpaceName)).minY)")
                 Color.clear.preference(key: ScrollViewKey.self, value: proxy.frame(in: .named(coordinateSpaceName)).minY)
             }
+            .onPreferenceChange(ScrollViewKey.self, perform: { value in
+                withAnimation {
+                    isScrolled = !(value < 0)
+                }
+            })
             .frame(height: 0)
             tabView
             Color.yellow.frame(height: 1000)
         }
         .coordinateSpace(name: coordinateSpaceName)
-        .onPreferenceChange(ScrollViewKey.self, perform: { value in
-            withAnimation {
-                isScrolled = value > 0
-            }
-        })
+   
         .safeAreaInset(edge: .top, content: {
             Color.clear.frame(height: 70)
         })
