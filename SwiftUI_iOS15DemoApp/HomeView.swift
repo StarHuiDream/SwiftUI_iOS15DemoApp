@@ -12,28 +12,50 @@ struct HomeView: View {
     @State var isScrolled = false
     let coordinateSpaceName = "homeScroll"
     
+    @State var isShowed = false
+    @Namespace var namespace
+    
     var body: some View {
-        ScrollView {
-            GeometryReader { proxy in
-                //                Text("\(proxy.frame(in: .named(coordinateSpaceName)).minY)")
-                Color.clear.preference(key: ScrollViewKey.self, value: proxy.frame(in: .named(coordinateSpaceName)).minY)
-            }
-            .onPreferenceChange(ScrollViewKey.self, perform: { value in
-                withAnimation {
-                    isScrolled = !(value < 0)
+        ZStack {
+            ScrollView {
+                GeometryReader { proxy in
+                    //                Text("\(proxy.frame(in: .named(coordinateSpaceName)).minY)")
+                    Color.clear.preference(key: ScrollViewKey.self, value: proxy.frame(in: .named(coordinateSpaceName)).minY)
                 }
+                .onPreferenceChange(ScrollViewKey.self, perform: { value in
+                    withAnimation {
+                        isScrolled = !(value < 0)
+                    }
+                })
+                .frame(height: 0)
+                tabView
+                
+                if !isShowed {
+                    CourseItemView(matchedViewNameSpace: namespace)
+                        .onTapGesture {
+                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                isShowed.toggle()
+                            }
+                        }
+                }
+                
+                //            Color.yellow.frame(height: 1000)
+            }
+            .coordinateSpace(name: coordinateSpaceName)
+            
+            .safeAreaInset(edge: .top, content: {
+                Color.clear.frame(height: 70)
             })
-            .frame(height: 0)
-            tabView
-            Color.yellow.frame(height: 1000)
+            .overlay(
+                NavigationBarView(title: "Featured", isScrolled: $isScrolled)
+            )
+            
+            if isShowed {
+                CourseView(matchedViewNameSpace: namespace, isShowed: $isShowed)
+            }
         }
-        .coordinateSpace(name: coordinateSpaceName)
-   
-        .safeAreaInset(edge: .top, content: {
-            Color.clear.frame(height: 70)
-        })
-        .overlay(
-            NavigationBarView(title: "Featured", isScrolled: $isScrolled)
+        .background(
+            Color("Background")
         )
     }
     
@@ -43,7 +65,7 @@ struct HomeView: View {
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
                     VStack{
-//                        Text("\(minX)")
+                        //                        Text("\(minX)")
                         FeatureItemView(course: item)
                             .padding(.vertical, 40)
                             .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
