@@ -23,7 +23,7 @@ struct ContentView: View {
             }
             TabBar()
         }.safeAreaInset(edge: .bottom) {
-            Color.clear.frame(height: 14)
+            Color.clear.frame(height: 34)
         }
     }
 }

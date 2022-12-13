@@ -27,6 +27,9 @@
 		A7DB63BC2942E430004F44D1 /* SwiftUI_iOS15DemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB63BB2942E430004F44D1 /* SwiftUI_iOS15DemoAppTests.swift */; };
 		A7DB63C62942E430004F44D1 /* SwiftUI_iOS15DemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB63C52942E430004F44D1 /* SwiftUI_iOS15DemoAppUITests.swift */; };
 		A7DB63C82942E430004F44D1 /* SwiftUI_iOS15DemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB63C72942E430004F44D1 /* SwiftUI_iOS15DemoAppUITestsLaunchTests.swift */; };
+		A7DCB6A52948B1D7004E3525 /* CourseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A42948B1D7004E3525 /* CourseItemView.swift */; };
+		A7DCB6A72948B290004E3525 /* MyConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A62948B290004E3525 /* MyConstant.swift */; };
+		A7DCB6A92948B3E3004E3525 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A82948B3E3004E3525 /* CourseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		A7DB63C12942E430004F44D1 /* SwiftUI_iOS15DemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUI_iOS15DemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DB63C52942E430004F44D1 /* SwiftUI_iOS15DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_iOS15DemoAppUITests.swift; sourceTree = "<group>"; };
 		A7DB63C72942E430004F44D1 /* SwiftUI_iOS15DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_iOS15DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A7DCB6A42948B1D7004E3525 /* CourseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItemView.swift; sourceTree = "<group>"; };
+		A7DCB6A62948B290004E3525 /* MyConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConstant.swift; sourceTree = "<group>"; };
+		A7DCB6A82948B3E3004E3525 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,7 @@
 		A73FCE3D2945E44E0086F194 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7DCB6A82948B3E3004E3525 /* CourseView.swift */,
 				A78AB0AB29434ADD008823EB /* AccountView.swift */,
 				A73FCE3E2945E47A0086F194 /* HomeView.swift */,
 				A7CB6D962946DCBA00606601 /* MatchedView.swift */,
@@ -123,6 +130,8 @@
 				A78AB0AD29437D54008823EB /* BlobView.swift */,
 				A78AB0AF29440FBC008823EB /* HexagonView.swift */,
 				A73FCE442945F0320086F194 /* FeatureItemView.swift */,
+				A7DCB6A42948B1D7004E3525 /* CourseItemView.swift */,
+				A7DCB6A62948B290004E3525 /* MyConstant.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -346,10 +355,13 @@
 				A73FCE3B29459BFD0086F194 /* Tab.swift in Sources */,
 				A7DB63AD2942E42E004F44D1 /* ContentView.swift in Sources */,
 				A73FCE4B29460B9A0086F194 /* Course.swift in Sources */,
+				A7DCB6A52948B1D7004E3525 /* CourseItemView.swift in Sources */,
+				A7DCB6A92948B3E3004E3525 /* CourseView.swift in Sources */,
 				A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */,
 				A78AB0B029440FBC008823EB /* HexagonView.swift in Sources */,
 				A73FCE472945FD030086F194 /* PreferenceKeys.swift in Sources */,
 				A73FCE39294594290086F194 /* TabBar.swift in Sources */,
+				A7DCB6A72948B290004E3525 /* MyConstant.swift in Sources */,
 				A73FCE49294606500086F194 /* AnimatableFontModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
