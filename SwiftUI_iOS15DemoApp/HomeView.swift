@@ -32,16 +32,15 @@ struct HomeView: View {
                 tabView
                 
                 if !isShowed {
-                    CourseItemView(matchedViewNameSpace: namespace)
-                        .onTapGesture {
-                            withAnimation(.openCard) {
-                                isShowed.toggle()
-//                                isHideStatusBar = true
+                    ForEach(courses) { course in
+                        CourseItemView(matchedViewNameSpace: namespace ,course: course)
+                            .onTapGesture {
+                                withAnimation(.openCard) {
+                                    isShowed.toggle()
+                                }
                             }
-                        }
+                    }
                 }
-                
-                //            Color.yellow.frame(height: 1000)
             }
             .coordinateSpace(name: coordinateSpaceName)
             
@@ -70,7 +69,7 @@ struct HomeView: View {
     
     var tabView: some View {
         TabView{
-            ForEach(courses) { item in
+            ForEach(featuredCourses) { item in
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
                     VStack{
