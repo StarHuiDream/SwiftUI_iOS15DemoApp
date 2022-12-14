@@ -30,6 +30,7 @@
 		A7DCB6A52948B1D7004E3525 /* CourseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A42948B1D7004E3525 /* CourseItemView.swift */; };
 		A7DCB6A72948B290004E3525 /* MyConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A62948B290004E3525 /* MyConstant.swift */; };
 		A7DCB6A92948B3E3004E3525 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A82948B3E3004E3525 /* CourseView.swift */; };
+		A7DCB6AB2949EA3E004E3525 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6AA2949EA3E004E3525 /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		A7DCB6A42948B1D7004E3525 /* CourseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItemView.swift; sourceTree = "<group>"; };
 		A7DCB6A62948B290004E3525 /* MyConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConstant.swift; sourceTree = "<group>"; };
 		A7DCB6A82948B3E3004E3525 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
+		A7DCB6AA2949EA3E004E3525 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				A78AB0A929433191008823EB /* Styles.swift */,
 				A73FCE48294606500086F194 /* AnimatableFontModifier.swift */,
+				A7DCB6AA2949EA3E004E3525 /* Animations.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				A7DCB6A52948B1D7004E3525 /* CourseItemView.swift in Sources */,
 				A7DCB6A92948B3E3004E3525 /* CourseView.swift in Sources */,
 				A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */,
+				A7DCB6AB2949EA3E004E3525 /* Animations.swift in Sources */,
 				A78AB0B029440FBC008823EB /* HexagonView.swift in Sources */,
 				A73FCE472945FD030086F194 /* PreferenceKeys.swift in Sources */,
 				A73FCE39294594290086F194 /* TabBar.swift in Sources */,

@@ -82,7 +82,7 @@ struct CourseView: View {
             
             
             Button {
-                withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                withAnimation(.openCard) {
                     isShowed.toggle()
                 }
             } label:{

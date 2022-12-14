@@ -14,6 +14,7 @@ struct HomeView: View {
     
     @State var isShowed = false
     @Namespace var namespace
+    @State var isHideStatusBar = false
     
     var body: some View {
         ZStack {
@@ -33,8 +34,9 @@ struct HomeView: View {
                 if !isShowed {
                     CourseItemView(matchedViewNameSpace: namespace)
                         .onTapGesture {
-                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                            withAnimation(.openCard) {
                                 isShowed.toggle()
+//                                isHideStatusBar = true
                             }
                         }
                 }
@@ -56,7 +58,13 @@ struct HomeView: View {
         }
         .background(
             Color("Background")
-        )
+        ).statusBar(hidden: isHideStatusBar)
+            .onChange(of: isShowed) { newValue in
+                withAnimation(.closeCard) {
+                    isHideStatusBar = newValue
+                }
+            }
+
     }
     
     var tabView: some View {
