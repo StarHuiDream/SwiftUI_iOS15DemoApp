@@ -54,6 +54,7 @@ struct HomeView: View {
             
             if isShowed {
                 CourseView(matchedViewNameSpace: namespace, isShowed: $isShowed)
+                    .zIndex(1)
             }
         }
         .background(
