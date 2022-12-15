@@ -10,6 +10,7 @@ import SwiftUI
 struct CourseView: View {
     
     var matchedViewNameSpace: Namespace.ID
+    var course: Course = courses[0]
     @Binding var isShowed: Bool
     @State var appear = [false, false, false]
     
@@ -30,6 +31,10 @@ struct CourseView: View {
         .onChange(of: isShowed) { newValue in
             fadeOut()
         }
+        .background(
+            Color("Background")
+        )
+        .ignoresSafeArea()
     }
     
     
@@ -41,35 +46,35 @@ struct CourseView: View {
         .frame(height: 500)
         .foregroundColor(.black)
         .background(
-            Image("Illustration 9")
+            Image(course.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .matchedGeometryEffect(id: MyConstant.imageID, in: matchedViewNameSpace)
+                .matchedGeometryEffect(id: "\(MyConstant.imageID)\(course.id)", in: matchedViewNameSpace)
         )
         .background(
-            Image("Background 5")
+            Image(course.background)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .matchedGeometryEffect(id: MyConstant.backgroundID, in: matchedViewNameSpace)
+                .matchedGeometryEffect(id: "\(MyConstant.backgroundID)\(course.id)", in: matchedViewNameSpace)
         )
         .mask {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .matchedGeometryEffect(id: MyConstant.maskID, in: matchedViewNameSpace)
+                .matchedGeometryEffect(id: "\(MyConstant.maskID)\(course.id)", in: matchedViewNameSpace)
         }
         .overlay(
             VStack(alignment: .trailing, spacing: 8) {
                 Spacer()
-                Text("Hello, StarHui!")
+                Text(course.title)
                     .font(.largeTitle.bold())
-                    .matchedGeometryEffect(id: MyConstant.titleID, in: matchedViewNameSpace)
+                    .matchedGeometryEffect(id: "\(MyConstant.titleID)\(course.id)", in: matchedViewNameSpace)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("你好呀！")
+                Text(course.subtitle)
                     .font(.subheadline)
-                    .matchedGeometryEffect(id: MyConstant.subTitleID, in: matchedViewNameSpace)
+                    .matchedGeometryEffect(id: "\(MyConstant.subTitleID)\(course.id)", in: matchedViewNameSpace)
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                Text("Build an iOS app for iOS 15 with custom layouts, animations and ...")
+                Text(course.text)
                     .font(.body)
-                    .matchedGeometryEffect(id: MyConstant.textID, in: matchedViewNameSpace)
+                    .matchedGeometryEffect(id: "\(MyConstant.textID)\(course.id)", in: matchedViewNameSpace)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Divider()
                 HStack  {
@@ -128,6 +133,9 @@ struct CourseView: View {
             Text("For the first time, you can build entire apps using SwiftUI only. In Xcode 12, you can now create multi-platform apps with minimal code changes. SwiftUI will automatically translate the navigation, fonts, forms and controls to its respective platform. For example, a sidebar will look differently on the Mac versus the iPad, while using exactly the same code. Dynamic type will adjust for the appropriate platform language, readability and information density. ")
         }
         .padding(20)
+        .background(
+            Color("Background")
+        )
     }
     
     func fadeIn() {

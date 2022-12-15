@@ -9,12 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var isScrolled = false
     let coordinateSpaceName = "homeScroll"
-    
+    //    var selectedCourse = UUID()
+    @State var selectedCourse: Course = courses[0]
+    @State var isScrolled = false
     @State var isShowed = false
-    @Namespace var namespace
     @State var isHideStatusBar = false
+    @Namespace var namespace
     
     var body: some View {
         ZStack {
@@ -31,16 +32,28 @@ struct HomeView: View {
                 .frame(height: 0)
                 tabView
                 
-                if !isShowed {
-                    ForEach(courses) { course in
-                        CourseItemView(matchedViewNameSpace: namespace ,course: course)
-                            .onTapGesture {
-                                withAnimation(.openCard) {
-                                    isShowed.toggle()
-                                }
+                
+                ForEach(courses) { course in
+                    if !isShowed {
+                    CourseItemView(matchedViewNameSpace: namespace ,course: course)
+                        .onTapGesture {
+                            withAnimation(.openCard) {
+                                isShowed.toggle()
+                                self.selectedCourse = course
+                                //                                    self.selectedCourse = course.id
                             }
+                        }
+                    } else {
+                        RoundedRectangle(cornerRadius: 30, style: .continuous)
+                            .fill(.white)
+                            .frame(height: 300)
+                            .cornerRadius(30)
+                            .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
+                            .opacity(0.3)
+                        .padding(.horizontal, 30)
                     }
                 }
+                
             }
             .coordinateSpace(name: coordinateSpaceName)
             
@@ -52,19 +65,20 @@ struct HomeView: View {
             )
             
             if isShowed {
-                CourseView(matchedViewNameSpace: namespace, isShowed: $isShowed)
+                CourseView(matchedViewNameSpace: namespace, course: selectedCourse, isShowed: $isShowed)
+                
                     .zIndex(1)
             }
         }
         .background(
-            Color("Background")
+            Color("background")
         ).statusBar(hidden: isHideStatusBar)
             .onChange(of: isShowed) { newValue in
                 withAnimation(.closeCard) {
                     isHideStatusBar = newValue
                 }
             }
-
+        
     }
     
     var tabView: some View {
