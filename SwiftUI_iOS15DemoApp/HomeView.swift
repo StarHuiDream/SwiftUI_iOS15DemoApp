@@ -10,19 +10,20 @@ import SwiftUI
 struct HomeView: View {
     
     let coordinateSpaceName = "homeScroll"
+    @Namespace var namespace
+    @EnvironmentObject var model: Model
     @State var selectedCourse: Course = courses[0]
     @State var isScrolled = false
     @State var isShowed = false
     @State var isHideStatusBar = false
-    @Namespace var namespace
-    @EnvironmentObject var model: Model
+    @State var showCourse = false
+    @State var showedCourse: Course = featuredCourses[0]
     
     var body: some View {
         ZStack {
             Color("Background").ignoresSafeArea()
             ScrollView {
                 GeometryReader { proxy in
-                    //                Text("\(proxy.frame(in: .named(coordinateSpaceName)).minY)")
                     Color.clear.preference(key: ScrollViewKey.self, value: proxy.frame(in: .named(coordinateSpaceName)).minY)
                 }
                 .onPreferenceChange(ScrollViewKey.self, perform: { value in
@@ -46,7 +47,6 @@ struct HomeView: View {
             
             if isShowed {
                 CourseView(matchedViewNameSpace: namespace, course: selectedCourse, isShowed: $isShowed)
-                
                     .zIndex(1)
             }
         }
@@ -68,7 +68,6 @@ struct HomeView: View {
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
                     VStack{
-                        //                        Text("\(minX)")
                         FeatureItemView(course: item)
                             .frame(maxWidth: 500)
                             .frame(maxWidth: .infinity)
@@ -84,6 +83,10 @@ struct HomeView: View {
                                     .frame(height: 230)
                                     .offset(x: 32, y: -80)
                             )
+                            .onTapGesture {
+                                showedCourse = item
+                                showCourse = true
+                            }
                     }
                     .frame(maxWidth: .infinity)
                 }
@@ -92,6 +95,9 @@ struct HomeView: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: 430)
         .background(Image("Blob 1").offset(x: 250, y: -100))
+        .sheet(isPresented: $showCourse) {
+            CourseView(matchedViewNameSpace: namespace, course: showedCourse, isShowed: $showCourse)
+        }
     }
     
     var cards: some View {
@@ -103,7 +109,6 @@ struct HomeView: View {
                             isShowed.toggle()
                             model.showDetail.toggle()
                             self.selectedCourse = course
-                            //                                    self.selectedCourse = course.id
                         }
                     }
             } else {
