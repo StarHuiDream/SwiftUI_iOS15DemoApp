@@ -16,9 +16,11 @@ struct HomeView: View {
     @State var isShowed = false
     @State var isHideStatusBar = false
     @Namespace var namespace
+    @EnvironmentObject var model: Model
     
     var body: some View {
         ZStack {
+            Color("Background").ignoresSafeArea()
             ScrollView {
                 GeometryReader { proxy in
                     //                Text("\(proxy.frame(in: .named(coordinateSpaceName)).minY)")
@@ -39,6 +41,7 @@ struct HomeView: View {
                         .onTapGesture {
                             withAnimation(.openCard) {
                                 isShowed.toggle()
+                                model.showDetail.toggle()
                                 self.selectedCourse = course
                                 //                                    self.selectedCourse = course.id
                             }

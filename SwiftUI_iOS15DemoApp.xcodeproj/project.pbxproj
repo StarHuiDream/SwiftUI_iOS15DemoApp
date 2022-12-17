@@ -19,6 +19,7 @@
 		A78AB0AC29434ADD008823EB /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AB29434ADD008823EB /* AccountView.swift */; };
 		A78AB0AE29437D55008823EB /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AD29437D54008823EB /* BlobView.swift */; };
 		A78AB0B029440FBC008823EB /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AF29440FBC008823EB /* HexagonView.swift */; };
+		A7CA2BE3294B50B600AD47E0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA2BE2294B50B600AD47E0 /* Model.swift */; };
 		A7CB6D972946DCBA00606601 /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB6D962946DCBA00606601 /* MatchedView.swift */; };
 		A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB63AA2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift */; };
 		A7DB63AD2942E42E004F44D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB63AC2942E42E004F44D1 /* ContentView.swift */; };
@@ -63,6 +64,7 @@
 		A78AB0AB29434ADD008823EB /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A78AB0AD29437D54008823EB /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		A78AB0AF29440FBC008823EB /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
+		A7CA2BE2294B50B600AD47E0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A7CB6D962946DCBA00606601 /* MatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedView.swift; sourceTree = "<group>"; };
 		A7DB63A72942E42E004F44D1 /* SwiftUI_iOS15DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUI_iOS15DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DB63AA2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_iOS15DemoAppApp.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				A73FCE3A29459BFD0086F194 /* Tab.swift */,
 				A73FCE462945FD030086F194 /* PreferenceKeys.swift */,
 				A73FCE4A29460B9A0086F194 /* Course.swift */,
+				A7CA2BE2294B50B600AD47E0 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */,
 				A7DCB6AB2949EA3E004E3525 /* Animations.swift in Sources */,
 				A78AB0B029440FBC008823EB /* HexagonView.swift in Sources */,
+				A7CA2BE3294B50B600AD47E0 /* Model.swift in Sources */,
 				A73FCE472945FD030086F194 /* PreferenceKeys.swift in Sources */,
 				A73FCE39294594290086F194 /* TabBar.swift in Sources */,
 				A7DCB6A72948B290004E3525 /* MyConstant.swift in Sources */,

@@ -13,6 +13,7 @@ struct CourseView: View {
     var course: Course = courses[0]
     @Binding var isShowed: Bool
     @State var appear = [false, false, false]
+    @EnvironmentObject var model: Model
     
     var body: some View {
         ZStack {
@@ -108,6 +109,7 @@ struct CourseView: View {
         Button {
             withAnimation(.openCard) {
                 isShowed.toggle()
+                model.showDetail.toggle()
             }
         } label:{
             Image(systemName: "xmark")
