@@ -13,7 +13,13 @@ struct CourseView: View {
     var course: Course = courses[0]
     @Binding var isShowed: Bool
     @State var appear = [false, false, false]
+    @State var dragGestureTranslation: CGSize = .zero
+    @State var isDraggable = true
     @EnvironmentObject var model: Model
+    
+    var translationWidth: CGFloat {
+        return dragGestureTranslation.width
+    }
     
     var body: some View {
         ZStack {
@@ -24,6 +30,18 @@ struct CourseView: View {
                     .padding(.bottom, 200)
                     .opacity(appear[2] ? 1 : 0)
             }
+            .background(
+                Color("Background")
+            )
+            .mask(
+                RoundedRectangle(cornerRadius: translationWidth / 3, style: .continuous)
+            )
+            .scaleEffect(translationWidth / -500 + 1)
+            .background(
+                .black.opacity(translationWidth / 500)
+            )
+            .background(.ultraThinMaterial)
+            .gesture(isDraggable ? drag : nil)
             button
         }
         .onAppear {
@@ -37,7 +55,6 @@ struct CourseView: View {
         )
         .ignoresSafeArea()
     }
-    
     
     var cover: some View {
         GeometryReader { proxy in
@@ -152,6 +169,30 @@ struct CourseView: View {
         .offset(y: 200)
     }
     
+    var drag: some Gesture {
+        DragGesture(minimumDistance: 30, coordinateSpace: .local)
+            .onChanged { value in
+                guard value.translation.width > 0 else {
+                    return
+                }
+                
+                guard value.startLocation.x < 100 else {
+                    return
+                }
+                self.dragGestureTranslation = value.translation
+                
+                if translationWidth > 120 {
+                    close()
+                }
+            }.onEnded{ value in
+                if translationWidth > 80 {
+                    close()
+                } else {
+                    self.dragGestureTranslation = .zero
+                }
+            }
+    }
+    
     func fadeIn() {
         withAnimation(.easeOut.delay(0.3)) {
             appear[0] = true
@@ -168,6 +209,19 @@ struct CourseView: View {
         appear[0] = false
         appear[1] = false
         appear[2] = false
+    }
+    
+    func close() {
+        withAnimation(.closeCard.delay(0.4)) {
+            isShowed.toggle()
+            model.showDetail.toggle()
+        }
+        
+//        withAnimation(.closeCard) {
+//            self.dragGestureTranslation = .zero
+//        }
+        
+        isDraggable = false
     }
 }
 
