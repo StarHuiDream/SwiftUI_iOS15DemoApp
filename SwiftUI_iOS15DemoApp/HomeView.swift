@@ -9,14 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var isScrolled = false
     let coordinateSpaceName = "homeScroll"
-    
+    //    var selectedCourse = UUID()
+    @State var selectedCourse: Course = courses[0]
+    @State var isScrolled = false
     @State var isShowed = false
+    @State var isHideStatusBar = false
     @Namespace var namespace
+    @EnvironmentObject var model: Model
     
     var body: some View {
         ZStack {
+            Color("Background").ignoresSafeArea()
             ScrollView {
                 GeometryReader { proxy in
                     //                Text("\(proxy.frame(in: .named(coordinateSpaceName)).minY)")
@@ -30,16 +34,29 @@ struct HomeView: View {
                 .frame(height: 0)
                 tabView
                 
-                if !isShowed {
-                    CourseItemView(matchedViewNameSpace: namespace)
+                
+                ForEach(courses) { course in
+                    if !isShowed {
+                    CourseItemView(matchedViewNameSpace: namespace ,course: course)
                         .onTapGesture {
-                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                            withAnimation(.openCard) {
                                 isShowed.toggle()
+                                model.showDetail.toggle()
+                                self.selectedCourse = course
+                                //                                    self.selectedCourse = course.id
                             }
                         }
+                    } else {
+                        RoundedRectangle(cornerRadius: 30, style: .continuous)
+                            .fill(.white)
+                            .frame(height: 300)
+                            .cornerRadius(30)
+                            .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
+                            .opacity(0.3)
+                        .padding(.horizontal, 30)
+                    }
                 }
                 
-                //            Color.yellow.frame(height: 1000)
             }
             .coordinateSpace(name: coordinateSpaceName)
             
@@ -51,17 +68,25 @@ struct HomeView: View {
             )
             
             if isShowed {
-                CourseView(matchedViewNameSpace: namespace, isShowed: $isShowed)
+                CourseView(matchedViewNameSpace: namespace, course: selectedCourse, isShowed: $isShowed)
+                
+                    .zIndex(1)
             }
         }
         .background(
-            Color("Background")
-        )
+            Color("background")
+        ).statusBar(hidden: isHideStatusBar)
+            .onChange(of: isShowed) { newValue in
+                withAnimation(.closeCard) {
+                    isHideStatusBar = newValue
+                }
+            }
+        
     }
     
     var tabView: some View {
         TabView{
-            ForEach(courses) { item in
+            ForEach(featuredCourses) { item in
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
                     VStack{
