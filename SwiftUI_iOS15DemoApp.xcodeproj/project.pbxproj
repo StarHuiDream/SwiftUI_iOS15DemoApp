@@ -33,6 +33,7 @@
 		A7DCB6A72948B290004E3525 /* MyConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A62948B290004E3525 /* MyConstant.swift */; };
 		A7DCB6A92948B3E3004E3525 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6A82948B3E3004E3525 /* CourseView.swift */; };
 		A7DCB6AB2949EA3E004E3525 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DCB6AA2949EA3E004E3525 /* Animations.swift */; };
+		A7E8B5EF294DE40F00A76DF7 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8B5EE294DE40F00A76DF7 /* Suggestion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		A7DCB6A62948B290004E3525 /* MyConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConstant.swift; sourceTree = "<group>"; };
 		A7DCB6A82948B3E3004E3525 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 		A7DCB6AA2949EA3E004E3525 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		A7E8B5EE294DE40F00A76DF7 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				A73FCE462945FD030086F194 /* PreferenceKeys.swift */,
 				A73FCE4A29460B9A0086F194 /* Course.swift */,
 				A7CA2BE2294B50B600AD47E0 /* Model.swift */,
+				A7E8B5EE294DE40F00A76DF7 /* Suggestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A73FCE3F2945E47B0086F194 /* HomeView.swift in Sources */,
+				A7E8B5EF294DE40F00A76DF7 /* Suggestion.swift in Sources */,
 				A78AB0AE29437D55008823EB /* BlobView.swift in Sources */,
 				A78AB0AC29434ADD008823EB /* AccountView.swift in Sources */,
 				A73FCE452945F0320086F194 /* FeatureItemView.swift in Sources */,
