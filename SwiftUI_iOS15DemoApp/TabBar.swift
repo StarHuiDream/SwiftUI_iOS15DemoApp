@@ -11,12 +11,9 @@ struct TabBar: View {
     @AppStorage("selectedTabBar") var selectedTab: Tab = .home
     @State var tabItemWidth: CGFloat = 0
     
- 
     var body: some View {
-        
         GeometryReader { proxy in
             let hasHomeIndicator = proxy.safeAreaInsets.bottom > 20
-            
             HStack {
                 buttons
             }
