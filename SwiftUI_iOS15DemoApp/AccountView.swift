@@ -10,6 +10,7 @@ import SwiftUI
 struct AccountView: View {
     @State var isDeleted = false
     @State var ispinned = false
+    @Environment(\.presentationMode) var presentationMode
     
     var pinTitle: (title: String,imageName: String) {
         ((ispinned ? "unpin" : "pin") , (ispinned ? "pin.slash" : "pin"))
@@ -27,6 +28,11 @@ struct AccountView: View {
                 Text("Account")
             )
             .navigationBarTitleDisplayMode(.large)
+            .navigationBarItems( trailing: Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("Done").bold()
+            })
         }
     }
     
