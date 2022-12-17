@@ -40,71 +40,42 @@ struct CourseView: View {
     
     
     var cover: some View {
-        VStack{
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-        .frame(height: 500)
-        .foregroundColor(.black)
-        .background(
-            Image(course.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .matchedGeometryEffect(id: "\(MyConstant.imageID)\(course.id)", in: matchedViewNameSpace)
-        )
-        .background(
-            Image(course.background)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .matchedGeometryEffect(id: "\(MyConstant.backgroundID)\(course.id)", in: matchedViewNameSpace)
-        )
-        .mask {
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .matchedGeometryEffect(id: "\(MyConstant.maskID)\(course.id)", in: matchedViewNameSpace)
-        }
-        .overlay(
-            VStack(alignment: .trailing, spacing: 8) {
+        GeometryReader { proxy in
+            let yOffset = proxy.frame(in: .global).minY
+            VStack{
                 Spacer()
-                Text(course.title)
-                    .font(.largeTitle.bold())
-                    .matchedGeometryEffect(id: "\(MyConstant.titleID)\(course.id)", in: matchedViewNameSpace)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text(course.subtitle)
-                    .font(.subheadline)
-                    .matchedGeometryEffect(id: "\(MyConstant.subTitleID)\(course.id)", in: matchedViewNameSpace)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                Text(course.text)
-                    .font(.body)
-                    .matchedGeometryEffect(id: "\(MyConstant.textID)\(course.id)", in: matchedViewNameSpace)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Divider()
-                HStack  {
-                    Image("Avatar Default")
-                        .resizable()
-                        .frame(width: 26, height: 26)
-                        .aspectRatio(contentMode: .fit)
-                    Spacer()
-                    Text("Test by StarHui")
-                        .font(.footnote)
-                }
-                //                            .padding(.horizontal, 20)
             }
-                .frame(height: 200)
-            
-                .padding()
-            //                            .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .background(
-                    Rectangle()
-                        .fill(.ultraThinMaterial)
-                        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                        .matchedGeometryEffect(id: MyConstant.blurID, in: matchedViewNameSpace)
-                )
-                .padding(.horizontal, 20)
-                .offset(y: 200)
-        )
-        .ignoresSafeArea()
+            .frame(maxWidth: .infinity)
+            .frame(height: yOffset > 0 ? 500 + yOffset : 500)
+            .foregroundColor(.black)
+            .background(
+                Image(course.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .matchedGeometryEffect(id: "\(MyConstant.imageID)\(course.id)", in: matchedViewNameSpace)
+                    .offset(y: yOffset > 0 ? yOffset * -0.8 : 0)
+            )
+            .background(
+                Image(course.background)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .matchedGeometryEffect(id: "\(MyConstant.backgroundID)\(course.id)", in: matchedViewNameSpace)
+                    .offset(y: yOffset > 0 ? -yOffset : 0)
+                    .scaleEffect(yOffset > 0 ? yOffset / 1000 + 1 : 1)
+                    .blur(radius: yOffset > 0 ? yOffset / 10 : 0)
+            )
+            .mask {
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .matchedGeometryEffect(id: "\(MyConstant.maskID)\(course.id)", in: matchedViewNameSpace)
+                    .offset(y: yOffset > 0 ? -yOffset : 0)
+            }
+            .overlay(
+                overLayContent
+            )
+        }
+        .frame(height: 500)
     }
-            
+    
     var button: some View {
         Button {
             withAnimation(.openCard) {
@@ -138,6 +109,47 @@ struct CourseView: View {
         .background(
             Color("Background")
         )
+    }
+    
+    var overLayContent: some View {
+        VStack(alignment: .trailing, spacing: 8) {
+            Spacer()
+            Text(course.title)
+                .font(.largeTitle.bold())
+                .matchedGeometryEffect(id: "\(MyConstant.titleID)\(course.id)", in: matchedViewNameSpace)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text(course.subtitle)
+                .font(.subheadline)
+                .matchedGeometryEffect(id: "\(MyConstant.subTitleID)\(course.id)", in: matchedViewNameSpace)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            Text(course.text)
+                .font(.body)
+                .matchedGeometryEffect(id: "\(MyConstant.textID)\(course.id)", in: matchedViewNameSpace)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+            HStack  {
+                Image("Avatar Default")
+                    .resizable()
+                    .frame(width: 26, height: 26)
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+                Text("Test by StarHui")
+                    .font(.footnote)
+            }
+            //                            .padding(.horizontal, 20)
+        }
+        .frame(height: 200)
+        
+        .padding()
+        //                            .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .background(
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                .matchedGeometryEffect(id: MyConstant.blurID, in: matchedViewNameSpace)
+        )
+        .padding(.horizontal, 20)
+        .offset(y: 200)
     }
     
     func fadeIn() {
