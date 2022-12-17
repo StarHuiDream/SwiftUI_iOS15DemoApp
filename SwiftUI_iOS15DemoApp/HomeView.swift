@@ -74,7 +74,7 @@ struct HomeView: View {
             }
         }
         .background(
-            Color("background")
+            Color("Background")
         ).statusBar(hidden: isHideStatusBar)
             .onChange(of: isShowed) { newValue in
                 withAnimation(.closeCard) {
