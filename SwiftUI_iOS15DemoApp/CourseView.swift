@@ -30,6 +30,7 @@ struct CourseView: View {
                     .padding(.bottom, 200)
                     .opacity(appear[2] ? 1 : 0)
             }
+            .coordinateSpace(name: "scroll")
             .background(
                 Color("Background")
             )
@@ -58,7 +59,7 @@ struct CourseView: View {
     
     var cover: some View {
         GeometryReader { proxy in
-            let yOffset = proxy.frame(in: .global).minY
+            let yOffset = proxy.frame(in: .named("scroll")).minY
             VStack{
                 Spacer()
             }
