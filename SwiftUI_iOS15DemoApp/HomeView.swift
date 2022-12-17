@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     
     let coordinateSpaceName = "homeScroll"
-    //    var selectedCourse = UUID()
     @State var selectedCourse: Course = courses[0]
     @State var isScrolled = false
     @State var isShowed = false
@@ -33,33 +32,11 @@ struct HomeView: View {
                 })
                 .frame(height: 0)
                 tabView
-                
-                
-                ForEach(courses) { course in
-                    if !isShowed {
-                    CourseItemView(matchedViewNameSpace: namespace ,course: course)
-                        .onTapGesture {
-                            withAnimation(.openCard) {
-                                isShowed.toggle()
-                                model.showDetail.toggle()
-                                self.selectedCourse = course
-                                //                                    self.selectedCourse = course.id
-                            }
-                        }
-                    } else {
-                        RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .fill(.white)
-                            .frame(height: 300)
-                            .cornerRadius(30)
-                            .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
-                            .opacity(0.3)
-                        .padding(.horizontal, 30)
-                    }
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 20) {
+                    cards
                 }
-                
             }
             .coordinateSpace(name: coordinateSpaceName)
-            
             .safeAreaInset(edge: .top, content: {
                 Color.clear.frame(height: 70)
             })
@@ -75,13 +52,14 @@ struct HomeView: View {
         }
         .background(
             Color("Background")
-        ).statusBar(hidden: isHideStatusBar)
-            .onChange(of: isShowed) { newValue in
-                withAnimation(.closeCard) {
-                    isHideStatusBar = newValue
-                }
+        )
+        .statusBar(hidden: isHideStatusBar)
+        .onChange(of: isShowed) { newValue in
+            withAnimation(.closeCard) {
+                isHideStatusBar = newValue
+                
             }
-        
+        }
     }
     
     var tabView: some View {
@@ -92,6 +70,8 @@ struct HomeView: View {
                     VStack{
                         //                        Text("\(minX)")
                         FeatureItemView(course: item)
+                            .frame(maxWidth: 500)
+                            .frame(maxWidth: .infinity)
                             .padding(.vertical, 40)
                             .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
                             .shadow(color: Color("Shadow").opacity(0.8), radius: 10, x: 10, y: 0)
@@ -112,6 +92,30 @@ struct HomeView: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: 430)
         .background(Image("Blob 1").offset(x: 250, y: -100))
+    }
+    
+    var cards: some View {
+        ForEach(courses) { course in
+            if !isShowed {
+                CourseItemView(matchedViewNameSpace: namespace ,course: course)
+                    .onTapGesture {
+                        withAnimation(.openCard) {
+                            isShowed.toggle()
+                            model.showDetail.toggle()
+                            self.selectedCourse = course
+                            //                                    self.selectedCourse = course.id
+                        }
+                    }
+            } else {
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(.white)
+                    .frame(height: 300)
+                    .cornerRadius(30)
+                    .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
+                    .opacity(0.3)
+                    .padding(.horizontal, 30)
+            }
+        }
     }
 }
 
