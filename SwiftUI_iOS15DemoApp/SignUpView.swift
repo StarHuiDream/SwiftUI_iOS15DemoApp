@@ -73,6 +73,8 @@ struct SignUpView: View {
             .buttonStyle(.angular)
             .tint(.accentColor)
             .controlSize(.large)
+            .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
+            
             Group {
                 Text("By clicking on ")
                 + Text("_Create an account_")
@@ -116,7 +118,7 @@ struct SignUpView: View {
                 circleColor = .red
             }
         }
-        .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
+//        .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
     }
     
     var geometry : some View {
