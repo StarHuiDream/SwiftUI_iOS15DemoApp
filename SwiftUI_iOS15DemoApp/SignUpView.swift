@@ -24,7 +24,11 @@ struct SignUpView: View {
                     .padding(8)
                     .frame(maxWidth:.infinity)
             }
-            .buttonStyle(.borderedProminent)
+            .font(.headline)
+            .blendMode(.overlay)
+            .buttonStyle(.angular)
+            .tint(.accentColor)
+            .controlSize(.large)
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
