@@ -1,21 +1,18 @@
 //
-//  SignUpView.swift
+//  SignInView.swift
 //  SwiftUI_iOS15DemoApp
 //
-//  Created by nazimei on 2022/12/17.
+//  Created by nazimei on 2022/12/18.
 //
 
 import SwiftUI
 
-struct SignUpView: View {
-    
-    @EnvironmentObject var model: Model
-    
+struct SignInView: View {
     enum Field: Hashable {
         case email
         case password
     }
-    
+    @EnvironmentObject var model: Model
     @State var email = ""
     @State var password = ""
     @State var circleY: CGFloat = 185
@@ -26,7 +23,7 @@ struct SignUpView: View {
 
     var body: some View {
         VStack (alignment: .leading, spacing: 16){
-            Text("Sing Up")
+            Text("Sing In")
                 .font(.largeTitle)
                 .bold()
             Text("Access 120+ hours of courses, tutorials and livestreams")
@@ -61,7 +58,7 @@ struct SignUpView: View {
                     }
                 }
             Button {
-               
+              
             } label: {
                 Text("Create an Account")
                     .bold()
@@ -74,17 +71,13 @@ struct SignUpView: View {
             .tint(.accentColor)
             .controlSize(.large)
             Group {
-                Text("By clicking on ")
-                + Text("_Create an account_")
-                    .foregroundColor(.primary)
-                + Text(", you agree to our **Terms of Service** and **[Privacy Policy](www.starhui.cn)**")
                 Divider()
                 HStack {
-                    Text("Already have an account?")
+                    Text("No account yet?")
                     Button {
-                        model.selectedModal = .signIn
+                        model.selectedModal = .signUp
                     } label: {
-                        Text("**Sign in**")
+                        Text("**Sign up**")
                     }
                 }
             }
@@ -125,13 +118,9 @@ struct SignUpView: View {
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
+struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            SignUpView()
-            SignUpView()
-                .preferredColorScheme(.dark)
-        }
-        .environmentObject(Model())
+        SignInView()
+            .environmentObject(Model())
     }
 }
