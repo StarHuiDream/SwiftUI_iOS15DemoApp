@@ -10,7 +10,8 @@ import SwiftUI
 struct AccountView: View {
     @State var isDeleted = false
     @State var ispinned = false
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
+    @AppStorage("isLogged") var isLogged = false
     
     var pinTitle: (title: String,imageName: String) {
         ((ispinned ? "unpin" : "pin") , (ispinned ? "pin.slash" : "pin"))
@@ -22,6 +23,7 @@ struct AccountView: View {
                 profile
                 settings
                 websites
+                signOutButton
             }
             .listStyle(.insetGrouped)
             .navigationBarTitle(
@@ -29,7 +31,7 @@ struct AccountView: View {
             )
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems( trailing: Button {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             } label: {
                 Text("Done").bold()
             })
@@ -115,6 +117,15 @@ struct AccountView: View {
         }.tint(.yellow)
     }
     
+    var signOutButton: some View {
+        Button {
+            isLogged = false
+            dismiss()
+        } label: {
+            Text("Sign out")
+                .tint(.red)
+        }
+    }
 }
 
 struct AccountView_Previews: PreviewProvider {
