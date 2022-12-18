@@ -100,12 +100,12 @@ struct SignUpView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .offset(y:circleY)
         )
-        .padding(20)
-        .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
-        .padding(20)
-        .background(
-            Image("Blob 1").offset(x: 200, y: -100)
-        )
+//        .padding(20)
+//        .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
+//        .padding(20)
+//        .background(
+//            Image("Blob 1").offset(x: 200, y: -100)
+//        )
         .coordinateSpace(name: "coordinate")
         .onChange(of: focusedField) { value in
             if value == .email {
@@ -116,6 +116,7 @@ struct SignUpView: View {
                 circleColor = .red
             }
         }
+        .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
     }
     
     var geometry : some View {
