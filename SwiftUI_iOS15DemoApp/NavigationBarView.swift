@@ -12,6 +12,7 @@ struct NavigationBarView: View {
     @Binding var isScrolled: Bool
     @State var showSearch = false
     @State var showAccount = false
+    @AppStorage("showModal") var showModal = false
     
     var body: some View {
         ZStack{
@@ -40,7 +41,10 @@ struct NavigationBarView: View {
                 }
                 
                 Button {
-                    showAccount = true
+//                    showAccount = true
+                    withAnimation {
+                        showModal = true
+                    }
                 } label: {
                     Image("Avatar Default")
                         .resizable()
