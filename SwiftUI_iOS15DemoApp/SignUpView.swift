@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @State var email = ""
+    @State var password = ""
     var body: some View {
         VStack (alignment: .leading, spacing: 16){
             Text("Sing Up")
@@ -16,6 +18,18 @@ struct SignUpView: View {
             Text("Access 120+ hours of courses, tutorials and livestreams")
                 .font(.headline)
                 .foregroundColor(.secondary)
+            
+            TextField("Email", text: $email)
+                .inputStyle(icon: "mail")
+                .textContentType(.emailAddress)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+        
+            SecureField("Password", text: $password)
+                .inputStyle(icon: "lock")
+                
+            
             Button {
                 
             } label: {
