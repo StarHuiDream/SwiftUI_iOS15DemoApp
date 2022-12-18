@@ -18,6 +18,9 @@ struct SignUpView: View {
     @State var password = ""
     @State var circleY: CGFloat = 185
     @FocusState var focusedField: Field?
+    @State var emailY: CGFloat = 0
+    @State var passwordY: CGFloat = 0
+    @State var circleColor: Color = .blue
 
     var body: some View {
         VStack (alignment: .leading, spacing: 16){
@@ -36,12 +39,25 @@ struct SignUpView: View {
                 .disableAutocorrection(true)
                 .focused($focusedField, equals: .email)
                 .shadow(color: focusedField == .email ? .primary.opacity(0.3) : .clear, radius: 10, x: 0, y: 3)
+                .overlay(geometry)
+                .onPreferenceChange(CirclePreferenceKey.self) { value in
+                    withAnimation {
+                        emailY = value
+                        circleY = value
+                    }
+                }
         
             SecureField("Password", text: $password)
                 .inputStyle(icon: "lock")
                 .textContentType(.password)
                 .shadow(color: focusedField == .password ? .primary.opacity(0.3) : .clear, radius: 10, x: 0, y: 3)
-                
+                .overlay(geometry)
+                .onPreferenceChange(CirclePreferenceKey.self) { value in
+                    withAnimation {
+                        passwordY = value
+                        circleY = value
+                    }
+                }
             Button {
                 
             } label: {
@@ -77,7 +93,7 @@ struct SignUpView: View {
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .background(
-            Circle().fill(.blue)
+            Circle().fill(circleColor)
                 .frame(width: 64, height: 64)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .offset(y:circleY)
@@ -88,12 +104,21 @@ struct SignUpView: View {
         .background(
             Image("Blob 1").offset(x: 200, y: -100)
         )
+        .coordinateSpace(name: "coordinate")
         .onChange(of: focusedField) { value in
             if value == .email {
-                circleY = 125
+                circleY = emailY
+                circleColor = .blue
             } else {
-                circleY = 170
+                circleY = passwordY
+                circleColor = .red
             }
+        }
+    }
+    
+    var geometry : some View {
+        GeometryReader { proxy in
+            Color.clear.preference(key: CirclePreferenceKey.self, value: proxy.frame(in: .named("coordinate")).minY)
         }
     }
 }
