@@ -27,25 +27,8 @@ struct ContentView: View {
             TabBar()
                 .offset(y: model.showDetail ? 200 : 0)
             
-            if !showModal {
-                ZStack {
-                    Color.clear.background(.regularMaterial).ignoresSafeArea()
-                    SignUpView()
-                    Button {
-                        withAnimation {
-                            showModal = false
-                        }
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.body.weight(.bold))
-                            .foregroundColor(.secondary)
-                            .padding(8)
-                        .background(.ultraThinMaterial, in: Circle())
-                        .frame(width: 44, height: 44)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                        .padding(20)
-                    }
-                }
+            if showModal {
+                ModalView()
             }
         }.safeAreaInset(edge: .bottom) {
             Color.clear.frame(height: 34)
