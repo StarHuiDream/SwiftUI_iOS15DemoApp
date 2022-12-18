@@ -70,6 +70,8 @@ struct SignInView: View {
             .buttonStyle(.angular)
             .tint(.accentColor)
             .controlSize(.large)
+            .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
+            
             Group {
                 Divider()
                 HStack {
@@ -109,7 +111,7 @@ struct SignInView: View {
                 circleColor = .red
             }
         }
-        .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
+//        .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 30)
     }
     
     var geometry : some View {
