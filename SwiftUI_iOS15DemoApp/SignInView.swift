@@ -20,7 +20,8 @@ struct SignInView: View {
     @State var emailY: CGFloat = 0
     @State var passwordY: CGFloat = 0
     @State var circleColor: Color = .blue
-
+    @AppStorage("isLogged") var isLogged = false
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 16){
             Text("Sing In")
@@ -58,9 +59,9 @@ struct SignInView: View {
                     }
                 }
             Button {
-              
+                isLogged = true
             } label: {
-                Text("Create an Account")
+                Text("Sign in")
                     .bold()
                     .padding(8)
                     .frame(maxWidth:.infinity)
