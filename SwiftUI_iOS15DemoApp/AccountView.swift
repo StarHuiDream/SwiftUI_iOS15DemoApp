@@ -12,6 +12,7 @@ struct AccountView: View {
     @State var ispinned = false
     @Environment(\.dismiss) var dismiss
     @AppStorage("isLogged") var isLogged = false
+    @State var address: Address = Address(id: 1, country: "China")
     
     var pinTitle: (title: String,imageName: String) {
         ((ispinned ? "unpin" : "pin") , (ispinned ? "pin.slash" : "pin"))
@@ -24,6 +25,12 @@ struct AccountView: View {
                 settings
                 websites
                 signOutButton
+            }
+            .task {
+                await fetchCountryData()
+            }
+            .refreshable {
+                await fetchCountryData()
             }
             .listStyle(.insetGrouped)
             .navigationBarTitle(
@@ -61,7 +68,7 @@ struct AccountView: View {
             HStack {
                 Image(systemName: "location")
                     .imageScale(.small)
-                Text("China")
+                Text(address.country)
                     .foregroundColor(.secondary)
             }
         }
@@ -124,6 +131,16 @@ struct AccountView: View {
         } label: {
             Text("Sign out")
                 .tint(.red)
+        }
+    }
+    
+    func fetchCountryData() async  {
+        do {
+            let url = URL(string: "https://random-data-api.com/api/address/random_address")!
+            let (data, _) = try await URLSession.shared.data(from: url)
+            address =  try JSONDecoder().decode(Address.self, from: data)
+        } catch {
+            print("Error!!!");
         }
     }
 }
