@@ -10,9 +10,10 @@ import SwiftUI
 struct AccountView: View {
     @State var isDeleted = false
     @State var ispinned = false
+    @State var address: Address = Address(id: 1, country: "China")
     @Environment(\.dismiss) var dismiss
     @AppStorage("isLogged") var isLogged = false
-    @State var address: Address = Address(id: 1, country: "China")
+    @AppStorage("isLiteMode") var isLiteMode = true
     @ObservedObject var coinModel = CoinMode()
     
     var pinTitle: (title: String,imageName: String) {
@@ -24,6 +25,7 @@ struct AccountView: View {
             List {
                 profile
                 settings
+                lite
                 websites
                 coins
                 signOutButton
@@ -91,6 +93,15 @@ struct AccountView: View {
             Label("Help", systemImage: "questionmark")
         }.listRowSeparator(.hidden)
             .accentColor(.primary)
+    }
+    
+    var lite: some View {
+        Section {
+            Toggle(isOn: $isLiteMode) {
+                Label("Lite Mode", systemImage: isLiteMode ? "tortoise" : "hare")
+            }
+            .accentColor(.primary)
+        }
     }
     
     var websites : some View {

@@ -16,6 +16,8 @@ struct Coin: Identifiable, Decodable {
 
 class CoinMode: ObservableObject {
     @Published var coins: [Coin] = []
+    
+    @MainActor
     func fetchCoin() async {
         do {
             let url = URL(string: "https://random-data-api.com/api/crypto_coin/random_crypto_coin?size=12")!
