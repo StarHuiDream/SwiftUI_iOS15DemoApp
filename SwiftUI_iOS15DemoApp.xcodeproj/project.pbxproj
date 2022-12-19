@@ -17,6 +17,7 @@
 		A73FCE4B29460B9A0086F194 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FCE4A29460B9A0086F194 /* Course.swift */; };
 		A74D6A36294F318500C9C27E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D6A35294F318500C9C27E /* AvatarView.swift */; };
 		A74D6A38294F3F9A00C9C27E /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D6A37294F3F9A00C9C27E /* Address.swift */; };
+		A74D6A3A294F467500C9C27E /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D6A39294F467500C9C27E /* Coin.swift */; };
 		A78AB0AA29433191008823EB /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0A929433191008823EB /* Styles.swift */; };
 		A78AB0AC29434ADD008823EB /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AB29434ADD008823EB /* AccountView.swift */; };
 		A78AB0AE29437D55008823EB /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78AB0AD29437D54008823EB /* BlobView.swift */; };
@@ -71,6 +72,7 @@
 		A73FCE4A29460B9A0086F194 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		A74D6A35294F318500C9C27E /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		A74D6A37294F3F9A00C9C27E /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		A74D6A39294F467500C9C27E /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		A78AB0A929433191008823EB /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		A78AB0AB29434ADD008823EB /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A78AB0AD29437D54008823EB /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				A7CA2BE2294B50B600AD47E0 /* Model.swift */,
 				A7E8B5EE294DE40F00A76DF7 /* Suggestion.swift */,
 				A74D6A37294F3F9A00C9C27E /* Address.swift */,
+				A74D6A39294F467500C9C27E /* Coin.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				A73FCE4B29460B9A0086F194 /* Course.swift in Sources */,
 				A7C72D38294D9473001CDADE /* SearchView.swift in Sources */,
 				A7DCB6A52948B1D7004E3525 /* CourseItemView.swift in Sources */,
+				A74D6A3A294F467500C9C27E /* Coin.swift in Sources */,
 				A7DCB6A92948B3E3004E3525 /* CourseView.swift in Sources */,
 				A7DB63AB2942E42E004F44D1 /* SwiftUI_iOS15DemoAppApp.swift in Sources */,
 				A7E1AB76294F1122004F3421 /* SignInView.swift in Sources */,

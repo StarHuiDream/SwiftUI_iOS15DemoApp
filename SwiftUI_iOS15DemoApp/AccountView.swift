@@ -13,6 +13,7 @@ struct AccountView: View {
     @Environment(\.dismiss) var dismiss
     @AppStorage("isLogged") var isLogged = false
     @State var address: Address = Address(id: 1, country: "China")
+    @ObservedObject var coinModel = CoinMode()
     
     var pinTitle: (title: String,imageName: String) {
         ((ispinned ? "unpin" : "pin") , (ispinned ? "pin.slash" : "pin"))
@@ -24,13 +25,16 @@ struct AccountView: View {
                 profile
                 settings
                 websites
+                coins
                 signOutButton
             }
             .task {
                 await fetchCountryData()
+                await coinModel.fetchCoin()
             }
             .refreshable {
                 await fetchCountryData()
+                await coinModel.fetchCoin()
             }
             .listStyle(.insetGrouped)
             .navigationBarTitle(
@@ -116,6 +120,29 @@ struct AccountView: View {
             }
         }
         .accentColor(.primary)
+    }
+    
+    var coins: some View {
+        Section(header: Text("Coins")) {
+            ForEach(coinModel.coins) { coin in
+                HStack {
+                    AsyncImage(url: URL(string: coin.logo)) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 32, height: 32)
+                    .padding(2)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(coin.coin_name)
+                        Text(coin.acronym)
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                    }
+                }
+            }
+        }
     }
     
     var pinButton: some View {
